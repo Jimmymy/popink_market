@@ -1,213 +1,213 @@
-# Popink Market Milestones
+# Popink Market 里程碑
 
-This document is the working project plan. It translates `SPEC.md` into staged execution, tracks progress, and records decisions that affect implementation.
+本文档是项目执行计划。它把 `SPEC.md` 中的需求拆成阶段任务，用于记录进度、验收标准和会影响实现的决策。
 
-## Status Legend
+## 状态说明
 
-- `Planned`: Not started.
-- `In Progress`: Actively being worked on.
-- `Blocked`: Waiting for a decision, dependency, or external input.
-- `Done`: Implemented and verified.
-- `Deferred`: Intentionally moved out of the current phase.
+- `Planned`：已计划，尚未开始。
+- `In Progress`：正在进行。
+- `Blocked`：被决策、依赖或外部输入阻塞。
+- `Done`：已实现并验证。
+- `Deferred`：已明确延期，不放入当前阶段。
 
-## Current Focus
+## 当前重点
 
-Current milestone: `M1 - Japan B2B Demo Foundation`
+当前里程碑：`M1 - 日本 B2B Demo 基础`
 
-Current objective: Replace the official Medusa starter assumptions with a Japan-focused tattoo supply B2B demo while keeping the stack easy to run locally.
+当前目标：把官方 Medusa starter 的默认假设替换成面向日本纹身用品 B2B 的 demo，同时保持本地环境容易启动和维护。
 
-## Milestone Overview
+## 里程碑总览
 
-| ID | Name | Status | Goal |
+| ID | 名称 | 状态 | 目标 |
 | --- | --- | --- | --- |
-| M0 | Project Environment Baseline | Done | Create a runnable local Medusa + Next.js + PostgreSQL + Redis baseline. |
-| M1 | Japan B2B Demo Foundation | In Progress | Configure Japan/JPY demo commerce data and tattoo product sample catalog. |
-| M2 | Storefront Content Pass | In Progress | Replace official starter copy and navigation with Popink Market demo content. |
-| M3 | Demo Purchase Flow | Planned | Verify browse, cart, checkout, demo payment, and admin order review. |
-| M4 | Maintenance And Deployment Prep | Planned | Prepare local operations docs and lightweight server migration notes. |
+| M0 | 项目环境基线 | Done | 建立可本地运行的 Medusa + Next.js + PostgreSQL + Redis 基线。 |
+| M1 | 日本 B2B Demo 基础 | In Progress | 配置日本/JPY demo 电商数据和纹身商品 sample 目录。 |
+| M2 | 前台内容替换 | In Progress | 把官方 starter 文案和导航替换成 Popink Market demo 内容。 |
+| M3 | Demo 购买流程 | Planned | 验证浏览、购物车、checkout、demo 支付和后台订单查看。 |
+| M4 | 维护和部署准备 | Planned | 准备本地运维文档和轻量服务器迁移说明。 |
 
-## M0 - Project Environment Baseline
+## M0 - 项目环境基线
 
-Status: `Done`
+状态：`Done`
 
-Spec links:
+关联规格：
 
-- `SPEC.md` section 2.1: Current stage goals
-- `SPEC.md` section 7.3: Deployment principles
-- `SPEC.md` section 10: Phase-one acceptance criteria
+- `SPEC.md` 第 2.1 节：当前阶段目标
+- `SPEC.md` 第 7.3 节：部署原则
+- `SPEC.md` 第 10 节：一期验收标准
 
-Completed:
+已完成：
 
-- Initialized Git repository.
-- Added Node version pin with `.node-version`.
-- Installed and selected Node `22.22.2` through `fnm`.
-- Created Medusa backend in `apps/backend`.
-- Created Next.js storefront in `apps/storefront`.
-- Added Docker PostgreSQL and Redis services.
-- Ran Medusa migrations and seed.
-- Created local admin user.
-- Verified backend build.
-- Verified storefront build.
-- Verified local backend and storefront URLs.
-- Added local setup documentation in `README.md`.
+- 初始化 Git 仓库。
+- 使用 `.node-version` 固定 Node 版本。
+- 通过 `fnm` 安装并选择 Node `22.22.2`。
+- 创建 Medusa 后端：`apps/backend`。
+- 创建 Next.js 前台：`apps/storefront`。
+- 添加 Docker PostgreSQL 和 Redis 服务。
+- 执行 Medusa migrations 和 seed。
+- 创建本地管理员账号。
+- 验证后端构建。
+- 验证前台构建。
+- 验证本地后端和前台 URL。
+- 在 `README.md` 中添加本地启动说明。
 
-Verification:
+验证方式：
 
 - `npm run build --workspace=@dtc/backend`
 - `npm run build --workspace=@dtc/storefront`
 - `http://localhost:9000/health`
 - `http://localhost:8000`
 
-Known follow-up:
+已知后续项：
 
-- npm audit reports vulnerabilities from the official starter dependency tree. Do not run `npm audit fix --force` without a separate dependency review.
+- `npm audit` 会报告官方 starter 依赖树中的安全告警。不要在没有单独依赖评审的情况下执行 `npm audit fix --force`。
 
-## M1 - Japan B2B Demo Foundation
+## M1 - 日本 B2B Demo 基础
 
-Status: `In Progress`
+状态：`In Progress`
 
-Spec links:
+关联规格：
 
-- `SPEC.md` section 4.3: Sample products
-- `SPEC.md` section 6.1: Product price visibility
-- `SPEC.md` section 6.4: Payment
-- `SPEC.md` section 6.5: Logistics
-- `SPEC.md` section 8.4: Internationalization preparation
+- `SPEC.md` 第 4.3 节：示例商品
+- `SPEC.md` 第 6.1 节：商品价格
+- `SPEC.md` 第 6.4 节：支付
+- `SPEC.md` 第 6.5 节：物流
+- `SPEC.md` 第 8.4 节：国际化准备
 
-Goal:
+目标：
 
-Replace the official starter's default demo assumptions with Japan-market demo data suitable for tattoo supplies.
+把官方 starter 的默认 demo 数据替换成适合纹身用品的日本市场 demo 数据。
 
-Tasks:
+任务：
 
-- `Done`: Configure Japan as the demo region.
-- `Done`: Configure JPY pricing as the storefront default.
-- `Done`: Replace default category structure with tattoo supply categories.
-- `Done`: Add sample products for consumables, equipment, ink, and aftercare.
-- `Done`: Add simple inventory levels for sample products.
-- `Done`: Keep demo/manual payment enabled.
-- `Done`: Keep demo/manual shipping enabled.
-- `Done`: Update storefront default region from starter default to Japan.
-- `Done`: Verify products appear in storefront.
-- `Planned`: Verify products appear in Medusa admin.
+- `Done`：配置日本作为 demo region。
+- `Done`：配置 JPY 作为前台默认价格币种。
+- `Done`：把默认分类结构替换为纹身用品分类。
+- `Done`：添加耗材、设备、色料、护理产品 sample 商品。
+- `Done`：为 sample 商品添加基础库存。
+- `Done`：保留 demo/manual payment。
+- `Done`：保留 demo/manual shipping。
+- `Done`：把前台默认 region 从 starter 默认值改为日本。
+- `Done`：验证商品出现在前台。
+- `Planned`：验证商品出现在 Medusa Admin。
 
-Acceptance criteria:
+验收标准：
 
-- Storefront opens under the Japan/default region path.
-- Product list shows tattoo-related sample products.
-- Product details show JPY prices.
-- Cart can accept sample products.
-- Admin can view the new sample products and inventory.
+- 前台可以通过日本默认路径打开。
+- 商品列表显示纹身相关 sample 商品。
+- 商品详情显示 JPY 价格。
+- sample 商品可以加入购物车。
+- Admin 可以查看新 sample 商品和库存。
 
-Open decisions:
+待确认决策：
 
-- Whether demo storefront customer-facing copy should be Japanese from M1 or deferred to M2.
-- Whether product names should be Japanese, English, or bilingual in the sample catalog.
+- Demo 前台面向客户的文案是否从 M1 开始就全部使用日文，还是推迟到 M2/M3。
+- Sample 商品名称使用日文、英文还是双语。
 
-Default assumption until changed:
+当前默认假设：
 
-- Use Japanese customer-facing copy for storefront-visible content.
-- Use English identifiers in code and seed scripts.
+- 前台客户可见内容优先使用日文方向，但 demo 阶段允许英文占位。
+- 代码、handle、SKU、seed 标识继续使用英文。
 
-## M2 - Storefront Content Pass
+## M2 - 前台内容替换
 
-Status: `In Progress`
+状态：`In Progress`
 
-Spec links:
+关联规格：
 
-- `SPEC.md` section 3: Target users
-- `SPEC.md` section 4.1: Storefront features
-- `SPEC.md` section 7.2: Frontend principles
+- `SPEC.md` 第 3 节：目标用户
+- `SPEC.md` 第 4.1 节：前台功能
+- `SPEC.md` 第 7.2 节：前端原则
 
-Goal:
+目标：
 
-Make the storefront look and read like an early Popink Market demo instead of an official Medusa starter.
+让前台第一眼像 Popink Market 的早期 demo，而不是官方 Medusa starter。
 
-Tasks:
+任务：
 
-- `Done`: Replace homepage hero copy.
-- `Done`: Replace navigation labels.
-- `Done`: Replace footer content.
-- `Done`: Remove or hide obvious Medusa starter branding.
-- `Done`: Add basic B2B positioning copy.
-- `Planned`: Add placeholder content pages if the starter supports them cleanly.
-- `Planned`: Keep frontend changes light and maintainable.
+- `Done`：替换首页 hero 文案。
+- `Done`：替换导航文案。
+- `Done`：替换 footer 内容。
+- `Done`：移除或隐藏明显的 Medusa starter 品牌露出。
+- `Done`：添加基础 B2B 定位文案。
+- `Planned`：如果 starter 结构适合，添加占位内容页。
+- `Planned`：保持前端改动轻量、可维护。
 
-Acceptance criteria:
+验收标准：
 
-- First screen clearly identifies Popink Market.
-- Navigation supports product discovery.
-- Footer no longer reads like a generic starter.
-- Mobile viewport remains usable even though PC is the first target.
+- 首屏能清楚识别 Popink Market。
+- 导航支持商品发现。
+- Footer 不再像通用 starter。
+- 虽然第一目标是 PC，移动端视口仍保持可用。
 
-## M3 - Demo Purchase Flow
+## M3 - Demo 购买流程
 
-Status: `Planned`
+状态：`Planned`
 
-Spec links:
+关联规格：
 
-- `SPEC.md` section 4.1: Storefront features
-- `SPEC.md` section 6.2: User registration
-- `SPEC.md` section 6.3: Checkout information
-- `SPEC.md` section 10: Phase-one acceptance criteria
+- `SPEC.md` 第 4.1 节：前台功能
+- `SPEC.md` 第 6.2 节：用户注册
+- `SPEC.md` 第 6.3 节：下单信息
+- `SPEC.md` 第 10 节：一期验收标准
 
-Goal:
+目标：
 
-Confirm the demo supports a complete basic buying flow.
+确认 demo 支持完整的基础购买流程。
 
-Tasks:
+任务：
 
-- `Planned`: Register a demo customer.
-- `Planned`: Log in as demo customer.
-- `Planned`: Add product to cart.
-- `Planned`: Enter Japanese-style shipping address sample.
-- `Planned`: Select demo shipping.
-- `Planned`: Select demo payment.
-- `Planned`: Place demo order.
-- `Planned`: Confirm order appears in admin.
-- `Planned`: Record any gaps in `docs/DECISIONS.md` or this milestone file.
+- `Planned`：注册 demo 客户。
+- `Planned`：登录 demo 客户。
+- `Planned`：把商品加入购物车。
+- `Planned`：填写日本地址格式 sample。
+- `Planned`：选择 demo shipping。
+- `Planned`：选择 demo payment。
+- `Planned`：提交 demo 订单。
+- `Planned`：确认订单出现在 Admin。
+- `Planned`：把发现的问题记录到 `docs/DECISIONS.md` 或当前里程碑文档。
 
-Acceptance criteria:
+验收标准：
 
-- A non-technical reviewer can complete a demo order locally.
-- The order is visible in the admin panel.
-- Any broken starter behavior is documented before deeper customization starts.
+- 非技术评审者可以在本地完成一笔 demo 订单。
+- 订单可以在 Admin 中看到。
+- 在深入定制前，starter 中存在的流程问题已经被记录。
 
-## M4 - Maintenance And Deployment Prep
+## M4 - 维护和部署准备
 
-Status: `Planned`
+状态：`Planned`
 
-Spec links:
+关联规格：
 
-- `SPEC.md` section 7.3: Deployment principles
-- `SPEC.md` section 8.1: Maintainability
-- `SPEC.md` section 8.2: Scalability
-- `SPEC.md` section 8.3: Portability
+- `SPEC.md` 第 7.3 节：部署原则
+- `SPEC.md` 第 8.1 节：可维护性
+- `SPEC.md` 第 8.2 节：可扩展性
+- `SPEC.md` 第 8.3 节：可移植性
 
-Goal:
+目标：
 
-Prepare the project for stable local operation and a later lightweight server deployment.
+为稳定本地运行和后续轻量服务器部署做准备。
 
-Tasks:
+任务：
 
-- `Planned`: Document common local commands.
-- `Planned`: Document how to reset local demo data.
-- `Planned`: Document environment variables.
-- `Planned`: Add notes for lightweight server deployment.
-- `Planned`: Identify which services must become managed services later.
-- `Planned`: Review security-sensitive defaults before any public deployment.
+- `Planned`：记录常用本地命令。
+- `Planned`：记录如何重置本地 demo 数据。
+- `Planned`：记录环境变量说明。
+- `Planned`：添加轻量服务器部署说明。
+- `Planned`：识别后续哪些服务需要迁移为托管服务。
+- `Planned`：在任何公开部署前评审安全敏感默认值。
 
-Acceptance criteria:
+验收标准：
 
-- Local setup can be repeated from documentation.
-- Demo data reset path is clear.
-- Public deployment blockers are documented.
+- 可以根据文档重复完成本地 setup。
+- Demo 数据重置路径清晰。
+- 公开部署前的 blocker 已记录。
 
-## Progress Log
+## 进度日志
 
-| Date | Milestone | Update |
+| 日期 | 里程碑 | 更新 |
 | --- | --- | --- |
-| 2026-04-25 | M0 | Created project baseline with Medusa backend, Next.js storefront, PostgreSQL, Redis, local admin, and successful builds. |
-| 2026-04-25 | M1 | Created milestone workflow and started Japan B2B demo foundation planning. |
-| 2026-04-25 | M1 | Replaced official starter seed with Japan/JPY tattoo demo catalog, reset local demo database, verified Store API, backend build, storefront build, `/jp`, and a product detail page. |
-| 2026-04-25 | M2 | Replaced homepage, navigation, side menu, and footer starter copy with Popink Market demo positioning; storefront build passed. |
+| 2026-04-25 | M0 | 建立项目基线：Medusa 后端、Next.js 前台、PostgreSQL、Redis、本地管理员和成功构建。 |
+| 2026-04-25 | M1 | 创建 milestone 工作流，开始规划日本 B2B demo 基础。 |
+| 2026-04-25 | M1 | 把官方 starter seed 替换为日本/JPY 纹身商品 demo catalog，重置本地 demo 数据库，并验证 Store API、后端构建、前台构建、`/jp` 和商品详情页。 |
+| 2026-04-25 | M2 | 替换首页、导航、侧边菜单和 footer 的 starter 文案，改成 Popink Market demo 定位；前台构建通过。 |
