@@ -76,5 +76,30 @@ Do not commit real `.env` files. Use `apps/backend/.env.template` and `apps/stor
 ## Notes
 
 - The local database has been migrated and seeded by the Medusa installer.
-- The current storefront default region is still the official starter seed region. Japan-specific regions, yen pricing, Japanese copy, and tattoo sample products should be added in the next implementation step.
+- The local demo seed is Japan-focused and uses JPY pricing.
 - npm audit currently reports vulnerabilities from the official starter dependency tree. Do not run `npm audit fix --force` blindly because it can break Medusa's pinned package set.
+
+## Reset Local Demo Data
+
+This removes the local Docker database volume and recreates the demo data from the Medusa migration seed:
+
+```powershell
+docker compose down -v
+npm run db:up
+npm run backend:migrate
+cd apps/backend
+npx medusa user -e admin@popink.local -p PopinkAdmin123
+```
+
+After a reset, update `apps/storefront/.env.local` with the newly generated publishable API key:
+
+```powershell
+docker exec popink_market_postgres psql -U medusa -d popink_market -t -c "select token from api_key where type = 'publishable' order by created_at desc limit 1;"
+```
+
+Then start the apps:
+
+```powershell
+npm run backend:dev
+npm run storefront:dev
+```

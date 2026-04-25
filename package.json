@@ -8,6 +8,7 @@
   "scripts": {
     "db:up": "docker compose up -d postgres redis",
     "db:down": "docker compose down",
+    "backend:migrate": "npm exec --workspace=@dtc/backend -- medusa db:migrate",
     "dev": "npm -r dev",
     "build": "npm -r build",
     "start": "turbo start",

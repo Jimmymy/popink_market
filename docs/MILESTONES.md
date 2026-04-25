@@ -22,7 +22,7 @@ Current objective: Replace the official Medusa starter assumptions with a Japan-
 | --- | --- | --- | --- |
 | M0 | Project Environment Baseline | Done | Create a runnable local Medusa + Next.js + PostgreSQL + Redis baseline. |
 | M1 | Japan B2B Demo Foundation | In Progress | Configure Japan/JPY demo commerce data and tattoo product sample catalog. |
-| M2 | Storefront Content Pass | Planned | Replace official starter copy and navigation with Popink Market demo content. |
+| M2 | Storefront Content Pass | In Progress | Replace official starter copy and navigation with Popink Market demo content. |
 | M3 | Demo Purchase Flow | Planned | Verify browse, cart, checkout, demo payment, and admin order review. |
 | M4 | Maintenance And Deployment Prep | Planned | Prepare local operations docs and lightweight server migration notes. |
 
@@ -80,15 +80,15 @@ Replace the official starter's default demo assumptions with Japan-market demo d
 
 Tasks:
 
-- `Planned`: Configure Japan as the demo region.
-- `Planned`: Configure JPY pricing as the storefront default.
-- `Planned`: Replace default category structure with tattoo supply categories.
-- `Planned`: Add sample products for consumables, equipment, ink, and aftercare.
-- `Planned`: Add simple inventory levels for sample products.
-- `Planned`: Keep demo/manual payment enabled.
-- `Planned`: Keep demo/manual shipping enabled.
-- `Planned`: Update storefront default region from starter default to Japan.
-- `Planned`: Verify products appear in storefront.
+- `Done`: Configure Japan as the demo region.
+- `Done`: Configure JPY pricing as the storefront default.
+- `Done`: Replace default category structure with tattoo supply categories.
+- `Done`: Add sample products for consumables, equipment, ink, and aftercare.
+- `Done`: Add simple inventory levels for sample products.
+- `Done`: Keep demo/manual payment enabled.
+- `Done`: Keep demo/manual shipping enabled.
+- `Done`: Update storefront default region from starter default to Japan.
+- `Done`: Verify products appear in storefront.
 - `Planned`: Verify products appear in Medusa admin.
 
 Acceptance criteria:
@@ -111,7 +111,7 @@ Default assumption until changed:
 
 ## M2 - Storefront Content Pass
 
-Status: `Planned`
+Status: `In Progress`
 
 Spec links:
 
@@ -125,11 +125,11 @@ Make the storefront look and read like an early Popink Market demo instead of an
 
 Tasks:
 
-- `Planned`: Replace homepage hero copy.
-- `Planned`: Replace navigation labels.
-- `Planned`: Replace footer content.
-- `Planned`: Remove or hide Medusa starter branding where appropriate.
-- `Planned`: Add basic B2B positioning copy.
+- `Done`: Replace homepage hero copy.
+- `Done`: Replace navigation labels.
+- `Done`: Replace footer content.
+- `Done`: Remove or hide obvious Medusa starter branding.
+- `Done`: Add basic B2B positioning copy.
 - `Planned`: Add placeholder content pages if the starter supports them cleanly.
 - `Planned`: Keep frontend changes light and maintainable.
 
@@ -209,3 +209,5 @@ Acceptance criteria:
 | --- | --- | --- |
 | 2026-04-25 | M0 | Created project baseline with Medusa backend, Next.js storefront, PostgreSQL, Redis, local admin, and successful builds. |
 | 2026-04-25 | M1 | Created milestone workflow and started Japan B2B demo foundation planning. |
+| 2026-04-25 | M1 | Replaced official starter seed with Japan/JPY tattoo demo catalog, reset local demo database, verified Store API, backend build, storefront build, `/jp`, and a product detail page. |
+| 2026-04-25 | M2 | Replaced homepage, navigation, side menu, and footer starter copy with Popink Market demo positioning; storefront build passed. |
