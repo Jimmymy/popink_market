@@ -1,76 +1,76 @@
-# Popink Market Working Rules
+# Popink Market 工作规则
 
-This document defines how planning, implementation, and documentation stay connected.
+本文档定义项目中的规划、实现、文档和验收如何保持同步。
 
-## Source Of Truth
+## 事实来源
 
-- `SPEC.md` defines product intent, scope, non-goals, and acceptance criteria.
-- `docs/MILESTONES.md` defines execution order, current progress, and milestone acceptance criteria.
-- `README.md` defines how to run and operate the project locally.
-- Code and configuration define the actual implementation.
+- `SPEC.md` 定义产品意图、范围、非目标和验收标准。
+- `docs/MILESTONES.md` 定义执行顺序、当前进度和里程碑验收标准。
+- `README.md` 定义如何在本地启动和维护项目。
+- 代码和配置定义真实实现状态。
 
-When these disagree, update them in this order:
+当这些内容不一致时，按下面顺序更新：
 
-1. Update `SPEC.md` if product scope or business rules changed.
-2. Update `docs/MILESTONES.md` if execution plan, status, or acceptance criteria changed.
-3. Update `README.md` if setup, commands, URLs, accounts, or operational behavior changed.
-4. Update code and tests to match the agreed scope.
+1. 如果产品范围或业务规则变化，先更新 `SPEC.md`。
+2. 如果执行计划、任务状态或验收标准变化，更新 `docs/MILESTONES.md`。
+3. 如果 setup、命令、URL、账号或运行方式变化，更新 `README.md`。
+4. 最后更新代码、配置和测试，使实现匹配已确认范围。
 
-## Milestone Workflow
+## 里程碑工作流
 
-Before starting a meaningful implementation task:
+开始一个有意义的实现任务前：
 
-- Confirm which milestone the task belongs to.
-- Check related `SPEC.md` sections listed in `docs/MILESTONES.md`.
-- Mark the task as `In Progress` if it is a tracked milestone task.
+- 确认任务属于哪个 milestone。
+- 查看 `docs/MILESTONES.md` 中列出的相关 `SPEC.md` 章节。
+- 如果任务已经被 milestone 跟踪，把任务状态标记为 `In Progress`。
 
-During implementation:
+实现过程中：
 
-- Keep changes scoped to the active milestone unless a dependency forces otherwise.
-- If a new requirement appears, add it to `SPEC.md` or the milestone open decisions before implementing it.
-- If a task is deferred, mark it as `Deferred` and state why.
+- 改动尽量限制在当前 milestone 范围内。
+- 如果出现新需求，先更新 `SPEC.md`，或记录到 milestone 的待确认决策中，再实现。
+- 如果任务延期，标记为 `Deferred`，并说明原因。
 
-After implementation:
+实现完成后：
 
-- Run relevant verification commands.
-- Update task status in `docs/MILESTONES.md`.
-- Add a progress-log entry with date, milestone, and result.
-- Update `README.md` if commands, environment, or usage changed.
+- 运行相关验证命令。
+- 更新 `docs/MILESTONES.md` 中的任务状态。
+- 在进度日志中添加日期、milestone 和结果。
+- 如果命令、环境变量或使用方式变化，更新 `README.md`。
 
-## Decision Rules
+## 决策记录规则
 
-Record a decision when it affects future development, deployment, or business scope.
+当一个决策会影响后续开发、部署或业务范围时，需要记录。
 
-Examples:
+适合记录的例子：
 
-- Default frontend language.
-- Region and currency assumptions.
-- Payment provider strategy.
-- Shipping strategy.
-- Whether to keep, customize, or replace a Medusa starter feature.
-- Whether a requirement is in scope for the current demo.
+- 前台默认语言。
+- 地区和币种假设。
+- 支付方式策略。
+- 物流方式策略。
+- 保留、定制或替换某个 Medusa starter 功能。
+- 某个需求是否进入当前 demo 范围。
 
-Small implementation details do not need a decision record unless they create a long-term constraint.
+小的实现细节通常不需要记录，除非它会形成长期约束。
 
-## Git Workflow
+## Git 工作流
 
-- Commit after each stable milestone or coherent feature slice.
-- Do not mix unrelated milestone work in one commit.
-- Use concise commit messages, for example `chore: establish local medusa baseline`.
-- Do not commit `.env`, logs, `node_modules`, build output, or local Docker data.
+- 每完成一个稳定 milestone 或一个清晰功能切片后提交。
+- 不要把无关 milestone 的改动混在同一个 commit。
+- commit message 保持简洁，例如 `chore: establish local medusa baseline`。
+- 不要提交 `.env`、日志、`node_modules`、构建产物或本地 Docker 数据。
 
-## Verification Workflow
+## 验证工作流
 
-Use the smallest meaningful verification for each change.
+每次改动使用最小但有意义的验证方式。
 
-Baseline checks:
+基础构建检查：
 
 ```powershell
 npm run build --workspace=@dtc/backend
 npm run build --workspace=@dtc/storefront
 ```
 
-Runtime checks:
+运行时检查：
 
 ```powershell
 npm run db:up
@@ -78,23 +78,22 @@ npm run backend:dev
 npm run storefront:dev
 ```
 
-Expected local URLs:
+预期本地地址：
 
 ```text
-Backend health: http://localhost:9000/health
-Admin:          http://localhost:9000/app
-Storefront:     http://localhost:8000
+后端健康检查: http://localhost:9000/health
+Admin:        http://localhost:9000/app
+前台:         http://localhost:8000
 ```
 
-## Current Demo Bias
+## 当前 Demo 默认原则
 
-Until the spec changes, prefer these defaults:
+除非 `SPEC.md` 后续修改，否则优先遵守：
 
-- Demo first, production later.
-- Japan market assumptions.
-- B2B tattoo industry users.
-- Public prices for demo.
-- No customer approval flow for demo.
-- Demo payment and demo shipping only.
-- Keep Medusa conventions unless customization is needed for the milestone.
-
+- 先 demo，后生产。
+- 默认面向日本市场。
+- 默认用户是纹身行业 B2B 客户。
+- demo 阶段公开显示价格。
+- demo 阶段不做客户审核。
+- demo 阶段只使用模拟支付和模拟物流。
+- 除非 milestone 需要定制，否则优先保留 Medusa 的框架惯例。
