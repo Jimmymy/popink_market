@@ -26,6 +26,7 @@ docker-compose.yml
 - 产品范围记录在 `SPEC.md`。
 - 执行计划和进度记录在 `docs/MILESTONES.md`。
 - 工作规则记录在 `docs/WORKFLOW.md`。
+- 下个对话接续上下文记录在 `docs/NEXT_CONTEXT.md`。
 - 本地启动和运维说明记录在当前 `README.md`。
 
 ## 首次启动
