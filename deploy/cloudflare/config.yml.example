@@ -1,0 +1,11 @@
+tunnel: YOUR_TUNNEL_UUID
+credentials-file: /home/YOUR_USER/.cloudflared/YOUR_TUNNEL_UUID.json
+
+originRequest:
+  connectTimeout: 30s
+  noHappyEyeballs: true
+
+ingress:
+  - hostname: shop.example.com
+    service: http://127.0.0.1:8080
+  - service: http_status:404

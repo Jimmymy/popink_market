@@ -7,6 +7,7 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { signup } from "@lib/data/customer"
+import { useParams } from "next/navigation"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
@@ -14,6 +15,7 @@ type Props = {
 
 const Register = ({ setCurrentView }: Props) => {
   const [message, formAction] = useActionState(signup as (state: string | null, formData: FormData) => Promise<string | null>, null as string | null)
+  const { countryCode } = useParams() as { countryCode?: string }
 
   return (
     <div
@@ -28,6 +30,11 @@ const Register = ({ setCurrentView }: Props) => {
         shopping experience.
       </p>
       <form className="w-full flex flex-col" action={formAction}>
+        <input
+          type="hidden"
+          name="country_code"
+          value={countryCode || "jp"}
+        />
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="First name"

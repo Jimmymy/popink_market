@@ -1,0 +1,17 @@
+[Unit]
+Description=Popink Market Medusa backend
+After=network.target postgresql.service redis.service
+Wants=postgresql.service redis.service
+
+[Service]
+Type=simple
+User=popink
+WorkingDirectory=/srv/popink_market
+EnvironmentFile=/srv/popink_market/apps/backend/.env
+ExecStart=/usr/bin/npm run backend:start
+Restart=always
+RestartSec=5
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target

@@ -14,6 +14,10 @@ import {
   removeCartId,
   setAuthToken,
 } from "./cookies"
+import {
+  getLoginCredentialsFromFormData,
+  getSignupPayloadFromFormData,
+} from "./customer-forms"
 
 export const retrieveCustomer =
   async (): Promise<HttpTypes.StoreCustomer | null> => {
@@ -60,13 +64,8 @@ export const updateCustomer = async (body: HttpTypes.StoreUpdateCustomer) => {
 }
 
 export async function signup(_currentState: unknown, formData: FormData) {
-  const password = formData.get("password") as string
-  const customerForm = {
-    email: formData.get("email") as string,
-    first_name: formData.get("first_name") as string,
-    last_name: formData.get("last_name") as string,
-    phone: formData.get("phone") as string,
-  }
+  const { password, countryCode, customerForm } =
+    getSignupPayloadFromFormData(formData)
 
   try {
     const token = await sdk.auth.register("customer", "emailpass", {
@@ -98,15 +97,15 @@ export async function signup(_currentState: unknown, formData: FormData) {
 
     await transferCart()
 
-    return createdCustomer
+    redirect(`/${countryCode}/account`)
   } catch (error) {
     return String(error)
   }
 }
 
 export async function login(_currentState: unknown, formData: FormData) {
-  const email = formData.get("email") as string
-  const password = formData.get("password") as string
+  const { email, password, countryCode } =
+    getLoginCredentialsFromFormData(formData)
 
   try {
     await sdk.auth
@@ -125,6 +124,8 @@ export async function login(_currentState: unknown, formData: FormData) {
   } catch (error) {
     return String(error)
   }
+
+  redirect(`/${countryCode}/account`)
 }
 
 export async function signout(countryCode: string) {

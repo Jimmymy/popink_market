@@ -7,6 +7,9 @@ checkEnvVariables()
  */
 const S3_HOSTNAME = process.env.MEDUSA_CLOUD_S3_HOSTNAME
 const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
+const BASE_URL_HOSTNAME = process.env.NEXT_PUBLIC_BASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_BASE_URL).hostname
+  : null
 
 /**
  * @type {import('next').NextConfig}
@@ -23,6 +26,14 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        "*.trycloudflare.com",
+        ...(BASE_URL_HOSTNAME ? [BASE_URL_HOSTNAME] : []),
+      ],
+    },
   },
   images: {
     unoptimized: true,

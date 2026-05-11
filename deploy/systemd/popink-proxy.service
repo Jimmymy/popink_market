@@ -1,0 +1,19 @@
+[Unit]
+Description=Popink Market unified proxy
+After=network.target popink-backend.service popink-storefront.service
+Wants=popink-backend.service popink-storefront.service
+
+[Service]
+Type=simple
+User=popink
+WorkingDirectory=/srv/popink_market
+Environment=DEMO_PROXY_PORT=8080
+Environment=STOREFRONT_PORT=8000
+Environment=BACKEND_PORT=9000
+ExecStart=/usr/bin/npm run proxy:start
+Restart=always
+RestartSec=5
+TimeoutStartSec=30
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Popink Market is a B2B ecommerce demo for tattoo studios and professionals in Japan."
+    />
+    <title>Popink Market | B2B Tattoo Supply Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Popink Market home">
+        <span class="brand-mark">P</span>
+        <span>Popink Market</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#categories">Categories</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pages">Pages</a>
+        <a href="#status">Status</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Japan B2B tattoo supply commerce</p>
+          <h1>Popink Market</h1>
+          <p class="hero-lede">
+            A production-oriented Medusa + Next.js ecommerce prototype for tattoo
+            studios, artists, and professional buyers.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#categories">View demo structure</a>
+            <a class="button secondary" href="#status">Deployment status</a>
+          </div>
+        </div>
+        <div class="hero-media" aria-label="Popink Market storefront preview">
+          <img src="./assets/popink-preview.jpg" alt="Popink Market preview image" />
+        </div>
+      </section>
+
+      <section id="categories" class="band">
+        <div class="section-heading">
+          <p class="eyebrow">Storefront map</p>
+          <h2>Product discovery structure</h2>
+        </div>
+        <div class="category-grid">
+          <article>
+            <span class="category-code">01</span>
+            <h3>Tattoo consumables</h3>
+            <p>Needles, grips, hygiene goods, and daily studio supplies.</p>
+          </article>
+          <article>
+            <span class="category-code">02</span>
+            <h3>Tattoo equipment</h3>
+            <p>Machines, power supplies, and workbench essentials.</p>
+          </article>
+          <article>
+            <span class="category-code">03</span>
+            <h3>Tattoo inks</h3>
+            <p>Sample catalog direction for JPY-priced ink products.</p>
+          </article>
+          <article>
+            <span class="category-code">04</span>
+            <h3>Aftercare</h3>
+            <p>Care products for studios to recommend after appointments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="workflow" class="split-section">
+        <div>
+          <p class="eyebrow">Customer flow</p>
+          <h2>Browsing to order confirmation</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <strong>Browse catalog</strong>
+            <span>Homepage, category list, product list, and detail pages.</span>
+          </li>
+          <li>
+            <strong>Add to cart</strong>
+            <span>Cart flow is implemented in the full local demo.</span>
+          </li>
+          <li>
+            <strong>Checkout baseline</strong>
+            <span>Japan address, shipping option, and sandbox payment fallback.</span>
+          </li>
+          <li>
+            <strong>Admin review</strong>
+            <span>Orders and sample products are visible from Medusa Admin.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section id="pages" class="band muted">
+        <div class="section-heading">
+          <p class="eyebrow">Static content</p>
+          <h2>Information pages mirrored from the storefront plan</h2>
+        </div>
+        <div class="link-list">
+          <a href="#about">About</a>
+          <a href="#wholesale">Wholesale</a>
+          <a href="#shipping">Shipping</a>
+          <a href="#returns">Returns</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="info-panels">
+          <article id="about">
+            <h3>About</h3>
+            <p>Popink Market focuses on practical procurement for Japan-based tattoo professionals.</p>
+          </article>
+          <article id="wholesale">
+            <h3>Wholesale</h3>
+            <p>B2B account review, wholesale pricing, and quotation workflows are planned future layers.</p>
+          </article>
+          <article id="shipping">
+            <h3>Shipping</h3>
+            <p>The current demo validates Japan shipping choices before real carrier integration.</p>
+          </article>
+          <article id="returns">
+            <h3>Returns</h3>
+            <p>Return policy content is staged for later production review and operations alignment.</p>
+          </article>
+          <article id="contact">
+            <h3>Contact</h3>
+            <p>This page is a GitHub Pages preview; live service forms are not connected here.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="status" class="status-section">
+        <div>
+          <p class="eyebrow">GitHub Pages scope</p>
+          <h2>Static preview only</h2>
+          <p>
+            This `github.io` version is a public-facing showcase for navigation,
+            content direction, and project positioning. The full Medusa backend,
+            checkout, customer auth, Admin, PostgreSQL, and Redis services are not
+            executed on GitHub Pages.
+          </p>
+        </div>
+        <div class="status-list">
+          <span>Static pages: available</span>
+          <span>Store API: not connected</span>
+          <span>Checkout: local/staging only</span>
+          <span>Admin: local/staging only</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Popink Market</span>
+      <span>Static GitHub Pages preview</span>
+    </footer>
+  </body>
+</html>

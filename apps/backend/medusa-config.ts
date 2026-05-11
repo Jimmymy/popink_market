@@ -3,6 +3,20 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
+  admin: {
+    vite: (config) => {
+      return {
+        ...config,
+        server: {
+          ...config?.server,
+          allowedHosts: [
+            ...(config?.server?.allowedHosts || []),
+            ".trycloudflare.com",
+          ],
+        },
+      }
+    },
+  },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,

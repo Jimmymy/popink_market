@@ -13,10 +13,22 @@
     "build": "npm -r build",
     "start": "turbo start",
     "lint": "turbo lint",
-    "test": "turbo test",
+    "test": "npm run test:scripts && turbo test",
+    "test:scripts": "node --test scripts/__tests__/*.test.mjs",
     "backend:seed": "turbo seed --filter=@dtc/backend",
     "backend:dev": "turbo dev --filter=@dtc/backend",
-    "storefront:dev": "turbo dev --filter=@dtc/storefront"
+    "backend:start": "npm run start --workspace=@dtc/backend",
+    "storefront:dev": "turbo dev --filter=@dtc/storefront",
+    "storefront:start": "npm run start --workspace=@dtc/storefront",
+    "local:dev": "node scripts/local-dev.mjs",
+    "proxy:start": "node scripts/demo-proxy.mjs",
+    "demo:proxy": "node scripts/demo-proxy.mjs",
+    "test:admin-login": "node scripts/test-admin-login.mjs",
+    "test:demo-customer-login": "node scripts/test-demo-customer-login.mjs",
+    "docs:read:utf8": "powershell -ExecutionPolicy Bypass -File scripts/read-utf8.ps1",
+    "docs:sync:lark": "node scripts/sync-docs-to-lark.mjs",
+    "docs:import:lark": "node scripts/import-markdown-to-lark-html.mjs",
+    "pages:preview": "npx --yes http-server docs/github-pages -p 4173"
   },
   "pnpm": {
     "overrides": {

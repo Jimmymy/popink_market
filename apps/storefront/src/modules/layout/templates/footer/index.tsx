@@ -3,6 +3,13 @@ import { Text, clx } from "@modules/common/components/ui"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
+const categoryLabels: Record<string, string> = {
+  "tattoo-consumables": "消耗品 / Consumables",
+  "tattoo-equipment": "機材 / Equipment",
+  "tattoo-inks": "インク / Inks",
+  aftercare: "アフターケア / Aftercare",
+}
+
 export default async function Footer() {
   const productCategories = await listCategories()
 
@@ -56,7 +63,7 @@ export default async function Footer() {
                           href={`/categories/${c.handle}`}
                           data-testid="category-link"
                         >
-                          {c.name}
+                          {categoryLabels[c.handle] || c.name}
                         </LocalizedClientLink>
                         {children && (
                           <ul className="grid grid-cols-1 ml-3 gap-2">
@@ -104,6 +111,51 @@ export default async function Footer() {
                     href="/cart"
                   >
                     Cart
+                  </LocalizedClientLink>
+                </li>
+              </ul>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <span className="txt-small-plus txt-ui-fg-base">Information</span>
+              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+                <li>
+                  <LocalizedClientLink
+                    className="hover:text-ui-fg-base"
+                    href="/about"
+                  >
+                    About
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    className="hover:text-ui-fg-base"
+                    href="/wholesale"
+                  >
+                    Wholesale
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    className="hover:text-ui-fg-base"
+                    href="/shipping"
+                  >
+                    Shipping
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    className="hover:text-ui-fg-base"
+                    href="/returns"
+                  >
+                    Returns
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    className="hover:text-ui-fg-base"
+                    href="/contact"
+                  >
+                    Contact
                   </LocalizedClientLink>
                 </li>
               </ul>

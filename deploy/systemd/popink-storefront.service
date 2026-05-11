@@ -1,0 +1,17 @@
+[Unit]
+Description=Popink Market Next.js storefront
+After=network.target popink-backend.service
+Wants=popink-backend.service
+
+[Service]
+Type=simple
+User=popink
+WorkingDirectory=/srv/popink_market
+EnvironmentFile=/srv/popink_market/apps/storefront/.env.local
+ExecStart=/usr/bin/npm run storefront:start
+Restart=always
+RestartSec=5
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target
