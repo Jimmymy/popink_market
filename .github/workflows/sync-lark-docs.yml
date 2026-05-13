@@ -2,8 +2,6 @@ name: Sync Docs To Lark
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 * * * *"
 
 jobs:
   sync:
